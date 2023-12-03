@@ -2,26 +2,71 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+a {
+  text-decoration: none;
+}
+
+a:visited,
+a:link {
+  color: unset;
+}
+
+.project-hover:hover .project-hover-cape {
+  display: flex;
+  color: white !important;
+}
+
+.hiddeScroll::-webkit-scrollbar {
+  display: none;
+}
+
+.projects {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.articles {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+.project-image,
+.article-image {
+  aspect-ratio: 358/372;
+}
+
+.lineElement::before,
+.lineElement::after {
+  background-color: black;
+  content: "";
+  width: calc(50% - 80px);
+  height: 1px;
+  position: absolute;
+  top: calc(48px + 40px);
+}
+
+.lineElement::before {
+  left: 0;
+}
+.lineElement::after {
+  right: 0;
+}
+
+@media screen and (min-width: 1024px) {
+  .projects {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   }
-}
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  .project-image,
+  .article-image {
+    aspect-ratio: 495/372;
+  }
 }
